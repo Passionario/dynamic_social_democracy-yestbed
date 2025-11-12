@@ -33,6 +33,7 @@ if (Q.nsdap_candidate_1932) {
     Q.dnvp_candidate_1932 = "Duesterberg";
     Q.dnvp_candidate_1932_disp = "Theodor Duesterberg";
 }
+
 !}
 tags: event
 view-if: year = 1932 and month >= 2 and not hindenburg_term_extended
