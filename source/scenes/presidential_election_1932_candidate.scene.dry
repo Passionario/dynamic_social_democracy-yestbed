@@ -16,23 +16,25 @@ if (Q.hindenburg_run) {
     // angry that he is running in the first place
     Q.hindenburg_angry_bruning += 20;
 }
-if (Q.kpd_leader = "Conciliators") {
-    Q.communist_candidate_1932 = "Eberlein";
-    Q.communist_candidate_1932_disp = "Hugo Eberlein"
-} else {
-    Q.communist_candidate_1932 = "Thalmann"
-    Q.communist_candidate_1932_disp = "Ernst Thälmann"
+if (Q.kpd_leader = "Conciliators" and kpd_relation >= 70) {
+    Q.communist_candidate_1932 = "Eberlein";;
+    Q.communist_candidate_1932_disp = "Hugo Eberlein";
+} 
+if (Q.kpd_leader = "Conciliators" and kpd_relation < 70) {
+    Q.communist_candidate_1932 = "Munzenberg";;
+    Q.communist_candidate_1932_disp = "Willi Münzenberg";
+}else {
+    Q.communist_candidate_1932 = "Thalmann";
+    Q.communist_candidate_1932_disp = "Ernst Thälmann";
 }
-
 Q.spd_candidate_1932_disp = "Otto Braun";
 if (Q.hindenburg_run) Q.reactionary_candidate_1932_disp = "Paul von Hindenburg";
-if (Q.communist_candidate_1932)  = "Ernst Thälmann";
+if (Q.communist_candidate_1932) Q.communist_candidate_1932 = "Thalmann";
 
 if (Q.nsdap_candidate_1932) {
     Q.dnvp_candidate_1932 = "Duesterberg";
     Q.dnvp_candidate_1932_disp = "Theodor Duesterberg";
 }
-
 !}
 tags: event
 view-if: year = 1932 and month >= 2 and not hindenburg_term_extended
@@ -57,7 +59,7 @@ go-to: candidate_selection
 
 With the 1932 German Presidential election coming up next month, we need to decide whether to run a candidate of our own or support one from another party. [? if hindenburg_run: Many are calling for us to support the incumbent Hindenburg, despite his <span style="color: #808080;">reactionary</span> tendencies. Contrary to fears, he hasn’t used his office to destroy the republic yet, so supporting him would hopefully prevent the <span style="color: #7A3C00;">Nazis</span>, who actually support destroying the republic, from winning. ?][? if not hindenburg_run: With Hindenburg's withdrawal, the German Right is in disarray, struggling to find a candidate who can attract support from the moderate right and middle, while also embodying the unifying character of Hindenburg. It’s likely that the candidate they put forward will have a military or industrial background and will be distanced from the partisan bickering of politics. ?]
 
-On the other hand, many in our party are calling for [+ spd_candidate_1932_disp +] to run again, but he is reluctant. [? if kpd_relation >= 50 : Another strange possibility is an united front with the <span style="color: #700000;">Communists</span>, either to support their candidate or our own candidate. ?][? if sapd_formed: The <span style="color: #9B0000;">**SAPD**</span>, our former leftists, [? if kpd_leader = Thalmann: The <span style="color: #9B0000;">**SAPD**</span> seeing the hostility of the <span style="color: #700000;">Communists</span>, are more likely to share an endorsement with us. ?] [? if kpd_leader = Conciliators: are likely to share an endorsement with the <span style="color: #700000;">Communists</span> in the hopes that we will follow to complete the <span style="color: #c00000;">United*</span> <span style="color: #9B0000;">Left</span> <span style="color: #700000;">Front</span>. ?] ?]
+On the other hand, many in our party are calling for [+ spd_candidate_1932_disp +] to run again, but he is reluctant. [? if kpd_relation >= 50 : Another strange possibility is an united front with the <span style="color: #700000;">Communists</span>, either to support their candidate or our own candidate. ?][? if sapd_formed: The <span style="color: #9B0000;">**SAPD**</span>, our former leftists, [? if kpd_leader = Thalmann: The <span style="color: #9B0000;">**SAPD**</span> seeing the hostility of the <span style="color: #700000;">Communists</span>, are more likely to share an endorsement with us. As long as its one of our own candidates. ?] [? if kpd_leader = Conciliators: are likely to share an endorsement with the <span style="color: #700000;">Communists</span> in the hopes that we will follow to complete the <span style="color: #c00000;">United*</span> <span style="color: #9B0000;">Left</span> <span style="color: #700000;">Front</span>. ?] ?]
 
 Anyhow, let's see who will be the candidates on <span class="tooltip-text" title="good game">the campaign trail</span>.
 
@@ -569,20 +571,39 @@ The <span style="color: #7A3C00;">**NSDAP**</span> has nominated Hermann Göring
 - @communist_selection: We await the decision the <span style="color: #700000;">Communists</span>.
 
 @communist_selection
-go-to: thalmann if ( Q.kpd_leader == "Thalmann"); eberlein if ( Q.kpd_leader == "Conciliators" )
+go-to: thalmann if ( Q.kpd_leader == "Thalmann"); munzenberg if ( Q.kpd_leader == "Conciliators" and kpd_relation < 70 ); eberlein if ( Q.kpd_leader == "Conciliators" and kpd_relation >= 70 );
 
 
 @thalmann
+on-arrival: {!
+Q.communist_candidate_1932 = "Thalmann";
+Q.communist_candidate_1932_disp = "Ernst Thälmann;
+!}
 face-image: img/portraits/ThälmannErnst.jpg
 
-The <span style="color: #700000;">**Communists**</span> will run Ernst Thälmann, their leader and candidate in 1925. A Third-Period Marxist-Lennist whom is ardently in like with the Comintern. He has constantly attacked us more than the <span style="color: #7A3C00;">Nazis</span> and some of his latest moves, like his embracement of a <span style="color: #7A3C00;">Natioal-populist</span> of *Volksrevolution*, "Scheringer Line" and the "correction of enemies" has damaged the parties reputation. However, if we were to not run a candidate, or to support a right-wing or bourgeois one, Thälmann and the <span style="color: #700000;">**KPD**</span> would greatly capitalize by painting themselves as the only left-wing option in the race. However, if our relations with the <span style="color: #700000;">**KPD**</span> are high enough, we may be able to convince him to drop out in favour of a unity candidate between our two parties though this seems unlikely. 
+The <span style="color: #700000;">Communists</span> will run Ernst Thälmann, their current leader and candidate in 1925. A Third-Period Marxist-Lennist whom is ardently in like with the Comintern. He has constantly attacked us more than the <span style="color: #7A3C00;">Nazis</span> and some of his latest moves, like his embracement of a <span style="color: #7A3C00;">Natioal-populist</span> of *Volksrevolution*, "Scheringer Line" and the "correction of enemies" has damaged the parties reputation. However, if we were to not run a candidate, or to support a right-wing or bourgeois one, Thälmann and the <span style="color: #700000;">**KPD**</span> would greatly capitalize by painting themselves as the only left-wing option in the race. However, if our relations with the <span style="color: #700000;">**KPD**</span> are high enough, we may be able to convince him to drop out in favour of a unity candidate between our two parties though this seems unlikely. 
+
+- @socialist: So, what is our decision? Should we run our own candidate?
+
+@munzenberg
+on-arrival: {!
+Q.communist_candidate_1932 = "Munzenberg";
+Q.communist_candidate_1932_disp = "Willi Münzenberg"
+!}
+face-image: img/portraits/MünzenbergWilli.jpg
+
+Ever since Thälmann has ruined himself with the Witoff Affair, the <span style="color: #700000;">Communists</span> will run Wilhelm Münzenberg, better known as "Willi Münzenberg", the "Red Millionaire". The leader of the of the Young <span style="color: #700000;">Communist</span> International and various other internationale <span style="color: #700000;">Communist</span> programs. His media, mainly Arbeiter-Illustrierte-Zeitung, is expansive and almost rivals if not suprasses Vorwärts. Despite this, he is one of the Conciliators whom shifted targets away from us and towards the <span style="color: #7A3C00;">Nazis</span> and is more willing to work with us. However, at the end of the day, he is still a <span style="color: #700000;">Marxist-Lennist</span> but he is not as bad as Ernst Thälmann would have been. If we were to not run a candidate, or to support a right-wing or bourgeois one, Münzenberg and the <span style="color: #700000;">**KPD**</span> would greatly capitalize by painting themselves as the only left-wing option in the race. However, if our relations with the <span style="color: #700000;">**KPD**</span> are high enough, we may be able to convince him to drop out in favour of a unity candidate between our two parties.
 
 - @socialist: So, what is our decision? Should we run our own candidate?
 
 @eberlein
+on-arrival: {!
+Q.communist_candidate_1932 = "Eberlein";
+Q.communist_candidate_1932_disp = "Hugo Eberlein";
+!}
 face-image: img/portraits/EberleinHugo.jpg
 
-Ever since Thälmann has ruined himself with the Witoff Affair, the <span style="color: #700000;">**Communists**</span> will run Hugo Eberlein, one of the 3 main "Conciliators" with Meyer passing away in 1930 and Ewert too busy aboard, he seemed the natural choice. Unlike Thälmann, he is a Luxembourgist like Paul Levi, being friendlier to us and willing to support more of our <span style="color: #9B0000;">Socialist</span> programs to prepare for the revolution in the future while maintaining the gaze of democracy. He focus on a ">United*</span> <span style="color: #9B0000;">Left</span> <span style="color: #700000;">Front</span> to fight the <span style="color: #3E88B3;">far*</span>-<span style="color: #7A3C00;">right</span>. However, if we were to not run a candidate, our voters will no doubt support the <span style="color: #700000;">Communists</span>, if we support a right-wing or bourgeois candidate. The <span style="color: #700000;">Communists</span> will no doubt feel betrayed and see a reduction in relations. However, we can propose a different candidate for the sake of a unity candiate of the left should our relations allow for it. 
+Ever since Thälmann has ruined himself with the Witoff Affair, the <span style="color: #700000;">Communists</span> will run Hugo Eberlein, one of the 3 main "Conciliators" with Meyer passing away in 1930 and Ewert too busy aboard, he seemed the natural choice. Unlike Thälmann, he is one of the 12 Founders of the Sparatacus League, also possibily a Luxemburgist like Paul Levi, being friendlier to us and willing to support more of our <span style="color: #9B0000;">Socialist</span> programs to prepare for the revolution in the future while maintaining the gaze of democracy. Unlike  He focuses on a "<span style="color: #DD0000;">United</span> <span style="color: #9B0000;">Left</span> <span style="color: #700000;">Front</span>" to fight the <span style="color: #3E88B3;">far*</span>-<span style="color: #7A3C00;">right</span>. Perhaps we can convince the rest of our party should we be unable to run a candidate of our own? But should we run a right-wing or bourgeois candidate, there is no doubt that Eberlein will stand to gain. [? if sapd_formed: There is no doubt that our former comrades in the <span style="color: #9B0000;">**SAPD**</span> will back him unless we have a different candidate in mind. ?]
 
 @socialist
 go-to: braun
@@ -676,6 +697,8 @@ go-to: endorsements_braun if braun_campaign; endorsements_eckener if eckener_cam
 [? if kpd_support_spd == 0 and communist_candidate_1932: <span style="color: #700000;">**[+ communist_candidate_1932_disp +]**</span> - supported by: ?]
 
 [? if kpd_support_spd == 0 and communist_candidate_1932: - <span style="color: #700000;">**KPD**</span> ?]
+
+[? if kpd_support_spd == 0 and communist_candidate_1932 and (spd_support_reactionary and hindenburg_run): - <span style="color: #9B0000;">**SAPD**</span> ?]
 
 [? if kpd_support_spd == 0 and communist_candidate_1932 and kpd_leader = "Conciliators" and sapd_formed: - <span style="color: #9B0000;">**SAPD**</span> ?]
 
@@ -890,7 +913,7 @@ subtitle: This is the default option.
 view-if: hindenburg_run
 on-arrival: spd_support_reactionary = 1; left_dissent += 15; labor_dissent += 10; hindenburg_angry_bruning += 25; hindenburg_angry -= 40; workers_spd -= 3; workers_kpd += 3; unemployed_spd -= 3; unemployed_kpd += 3
 
-Despite his known <span style="color: #808080;">reactionary</span> nature, Hindenburg has at least been keeping the <span style="color: #7A3C00;">Nazis</span> at bay. Thus, we must support him. [? if bruning_time: Hindenburg is reportedly dissatisfied with having been elected with the support of <span style="color: #c00000;">socialists</span>, blaming Brüning and his unpopular cabinet for this outcome. ?]
+Despite his known <span style="color: #808080;">reactionary</span> nature, Hindenburg has at least been keeping the <span style="color: #7A3C00;">Nazis</span> at bay. Thus, we must support him. [? if bruning_time: Hindenburg is reportedly dissatisfied with having been elected with the support of <span style="color: #c00000;">socialists</span>, blaming Brüning and his unpopular cabinet for this outcome. [? if sapd_formed or left_split: Our former Comrades are disgusted with our decision to support a reactionary even for the sake of democracy. As such they have thrown their support behind the <span style="color: #700000;">**KPD**</span>. ?] ?]
 
 @support_reactionary
 subtitle: This is the default option.
@@ -1079,7 +1102,7 @@ go-to: convince_lvp_success if ((lvp_relation >= 70 and lvp_ideology == "Right")
 The <span style="color: #FFCC00;">liberal</span> vote has been falling over time, especially during the current economic depression, so they will probably be of minimal help to us. Still, every little bit counts. They will certainly be a hard party to convince, with vehemently anti-<span style="color: #c00000;">socialist</span> industrialists influencing the party.
 
 @convince_lvp_success
-on-arrival: lvp_support_spd = 1; lvp_left += 6; lvp_relation += 5; new_middle_dnvp += new_middle_lvp*0.1 if not kvp_formed; old_middle_dnvp += old_middle_lvp*0.2 if not kvp_formed; rural_dnvp += rural_lvp*0.2 if not kvp_formed; new_middle_kvp += new_middle_lvp*0.1 if not kvp_formed; old_middle_kvp += old_middle_lvp*0.2 if not kvp_formed; rural_kvp += rural_lvp*0.2 if not kvp_formed; new_middle_lvp *= 0.9; old_middle_lvp *= 0.8; rural_lvp *= 0.8
+on-arrival: lvp_support_spd = 1; lvp_left += 6; lvp_relation += 5; new_middle_dnvp += new_middle_lvp*0.1 if not kvp_formed; old_middle_dnvp += old_middle_lvp*0.2 if not kvp_formed; rural_dnvp += rural_lvp*0.2 if not kvp_formed; new_middle_kvp += new_middle_lvp*0.1 if not kvp_formed; old_middle_kvp += old_middle_lvp*0.2 if not kvp_formed; rural_kvp += rural_lvp*0.2 if not kvp_formed; new_middle_lvp *= 0.9; old_middle_lvp *= 0.8; rural_lvp *= 0.8; industrial_lvp_backing -= 1; industrial_dnvp_backing += 1 if not kvp_formed; industrial_kvp_backing += 1 if kvp_formed;
 go-to: endorsements_braun
 
 Surprisingly, we have convinced the <span style="color: #FFCC00;">**LVP**</span> to give <span style="color: #c00000;">Braun</span> an official endorsement, to the shock of the party's industrial backers. In response, they begin to withdraw their support from the party en masse, and a significant portion of right-wing voters are refusing to support us.
@@ -1262,7 +1285,7 @@ go-to: convince_lvp_success_eckener if ((lvp_relation >= 50 and lvp_ideology == 
 The <span style="color: #FFCC00;">liberal</span> vote has been falling over time, especially during the current economic depression, so they will probably be of minimal help to us. Still, every little bit counts. They will certainly be a hard party to convince, with vehemently anti-<span style="color: #c00000;">socialist</span> industrialists influencing the party away from Eckener.
 
 @convince_lvp_success_eckener
-on-arrival: lvp_support_spd = 1; lvp_left += 3; lvp_relation += 4; old_middle_lvp -= 2; rural_lvp -= 2; old_middle_kvp += 2; rural_kvp += 2; old_middle_kvp += 2 if not kvp_formed; rural_kvp += 2 if not kvp_formed
+on-arrival: lvp_support_spd = 1; lvp_left += 3; lvp_relation += 4; old_middle_lvp -= 2; rural_lvp -= 2; old_middle_kvp += 2; rural_kvp += 2; old_middle_kvp += 2 if not kvp_formed; rural_kvp += 2 if not kvp_formed; industrial_lvp_backing -= 1; industrial_dnvp_backing += 1 if not kvp_formed; industrial_kvp_backing += 1 if kvp_formed
 go-to: endorsements_eckener
 
 We have convinced the <span style="color: #FFCC00;">**LVP**</span> to give Eckener an official endorsement, to the displeasure of the party's industrial backers. In response, they begin to withdraw their support from the party, and a notable portion of right-wing voters are opting to abstain.
