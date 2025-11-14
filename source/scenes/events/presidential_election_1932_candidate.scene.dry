@@ -16,16 +16,11 @@ if (Q.hindenburg_run) {
     // angry that he is running in the first place
     Q.hindenburg_angry_bruning += 20;
 }
-if (Q.kpd_leader = "Conciliators") {
-    Q.communist_candidate_1932 = "Eberlein";;
-    Q.communist_candidate_1932_disp = "Hugo Eberlein";
-} else {
-    Q.communist_candidate_1932 = "Thalmann";
-    Q.communist_candidate_1932_disp = "Ernst Thälmann";
-}
+Q.communist_candidate_1932 = "Thälmann";
+
 Q.spd_candidate_1932_disp = "Otto Braun";
 if (Q.hindenburg_run) Q.reactionary_candidate_1932_disp = "Paul von Hindenburg";
-if (Q.communist_candidate_1932) Q.communist_candidate_1932 = "Thalmann";
+Q.communist_candidate_1932_disp = "Ernst Thälmann";
 
 if (Q.nsdap_candidate_1932) {
     Q.dnvp_candidate_1932 = "Duesterberg";
