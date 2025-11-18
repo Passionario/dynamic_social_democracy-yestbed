@@ -16,11 +16,11 @@ if (Q.hindenburg_run) {
     // angry that he is running in the first place
     Q.hindenburg_angry_bruning += 20;
 }
-if (Q.kpd_leader = "Conciliators" and kpd_relation >= 70) {
+if (Q.kpd_leader = "Conciliators" && kpd_relation >= 70) {
     Q.communist_candidate_1932 = "Eberlein";
     Q.communist_candidate_1932_disp = "Hugo Eberlein";
 } 
-if (Q.kpd_leader = "Conciliators" and kpd_relation < 70) {
+if (Q.kpd_leader = "Conciliators" && kpd_relation < 70) {
     Q.communist_candidate_1932 = "Munzenberg";
     Q.communist_candidate_1932_disp = "Willi Münzenberg";
 } else {
@@ -82,7 +82,7 @@ if ((Q.lvp_ideology == "Right" && Q.lvp_leader == "Dingeldey" && Q.lvp_formed ||
 if ((Q.dvp_leader == "Luther" || Q.lvp_leader == "Luther") && Q.pro_republic >= 50 && Q.liberal_vote >= 8 && Q.bourgeois_votes >= 35) Q.luther_unlock_pres = 1;
 if (((Q.dstp_formed || Q.ddp_relation < 40 || Q.pro_republic < 40) && Q.ddp_ideology != "Left" && !Q.lvp_formed || Q.lvp_formed && Q.lvp_ideology != "Left" && Q.pro_republic < 50) && Q.liberal_vote >= 8 && Q.bourgeois_votes >= 35) Q.gessler_unlock_pres = 1;
 if ((Q.stegerwald_path && Q.z_leader == "Stegerwald" )) Q.adenauer_unlock_pres = 1;
-if ((Q.stegerwald_path && Q.z_leader == "Kaiser" )) Q.wirth_unlock_pres = 1;
+if ((Q.z_leader == "Joos" or Q.z_leader == "Kaiser" )) Q.wirth_unlock_pres = 1;
 if (!Q.stegerwald_path && Q.z_relation >= 30 && Q.chancellor != "Brüning" && Q.bourgeois_votes >= 40) Q.bruning_unlock_pres = 1;
 if (!Q.stegerwald_path && !Q.bruning_unlock_pres && !Q.adenauer_unlock_pres) Q.stegerwald_unlock_pres = 1;
 if (Q.dnvp_ideology == "Moderate" && Q.bourgeois_votes < 35 || Q.kvp_formed && Q.bourgeois_votes < 35 || Q.cvp_formed && Q.cvp_ideology == "Right") Q.vorbeck_unlock_pres = 1;
@@ -571,7 +571,7 @@ The <span style="color: #7A3C00;">**NSDAP**</span> has nominated Hermann Göring
 - @communist_selection: We await the decision the <span style="color: #700000;">Communists</span>.
 
 @communist_selection
-go-to: thalmann if ( Q.kpd_leader == "Thalmann"); munzenberg if ( Q.kpd_leader == "Conciliators" and kpd_relation < 70 ); eberlein if ( Q.kpd_leader == "Conciliators" and kpd_relation >= 70 );
+go-to: thalmann if ( Q.kpd_leader == "Thalmann"); munzenberg if ( Q.kpd_leader == "Conciliators" && kpd_relation < 70 ); eberlein if ( Q.kpd_leader == "Conciliators" && kpd_relation >= 70 );
 
 
 @thalmann
