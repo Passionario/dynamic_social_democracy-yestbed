@@ -11,14 +11,16 @@ if (!Q.hitler_deported && Q.hitler_citizen) {
     Q.nsdap_candidate_1932_disp = "Hermann Göring";
 }
 Q.spd_candidate_1932 = "Braun";
-Q.spd_candidate_1932_disp = "Otto Braun";
 if (Q.hindenburg_run) {
     Q.reactionary_candidate_1932 = "Hindenburg";
     // angry that he is running in the first place
     Q.hindenburg_angry_bruning += 20;
-    Q.reactionary_candidate_1932_disp = "Paul von Hindenburg";
 }
 Q.communist_candidate_1932 = "Thälmann";
+
+Q.spd_candidate_1932_disp = "Otto Braun";
+if (Q.hindenburg_run) Q.reactionary_candidate_1932_disp = "Paul von Hindenburg";
+Q.communist_candidate_1932_disp = "Ernst Thälmann";
 
 if (Q.nsdap_candidate_1932) {
     Q.dnvp_candidate_1932 = "Duesterberg";
