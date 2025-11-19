@@ -18,6 +18,7 @@ if (Q.hindenburg_run) {
     Q.hindenburg_angry_bruning += 20;
     Q.reactionary_candidate_1932_disp = "Paul von Hindenburg";
 }
+Q.communist_candidate_1932 = "Thälmann";
 if ((Q.kpd_leader == "Conciliators") && (Q.kpd_relation >= 70)) {
     Q.communist_candidate_1932 = "Eberlein";
     Q.communist_candidate_1932_disp = "Hugo Eberlein";
@@ -27,7 +28,7 @@ if ((Q.kpd_leader == "Conciliators") && (Q.kpd_relation < 70)) {
     Q.communist_candidate_1932_disp = "Willi Münzenberg";
 } 
 if (Q.kpd_leader != "Conciliators")  {
-    Q.communist_candidate_1932 = "Thalmann";
+    Q.communist_candidate_1932 = "Thälmann";
     Q.communist_candidate_1932_disp = "Ernst Thälmann";
 }
 if (Q.nsdap_candidate_1932) {
