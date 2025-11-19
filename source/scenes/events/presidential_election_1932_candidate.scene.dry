@@ -576,7 +576,7 @@ go-to: thalmann if kpd_leader == "Thalmann"; munzenberg if (kpd_leader == "Conci
 @thalmann
 on-arrival: {!
 Q.communist_candidate_1932 = "Thalmann";
-Q.communist_candidate_1932_disp = "Ernst Thälmann;
+Q.communist_candidate_1932_disp = "Ernst Thälmann";
 !}
 face-image: img/portraits/ThälmannErnst.jpg
 
@@ -587,7 +587,7 @@ The <span style="color: #700000;">Communists</span> will run Ernst Thälmann, th
 @munzenberg
 on-arrival: {!
 Q.communist_candidate_1932 = "Munzenberg";
-Q.communist_candidate_1932_disp = "Willi Münzenberg"
+Q.communist_candidate_1932_disp = "Willi Münzenberg";
 !}
 face-image: img/portraits/MünzenbergWilli.jpg
 
