@@ -1054,7 +1054,7 @@ if (Q.reactionary_candidate_1932 == "Luther" || Q.reactionary_candidate_1932 == 
     Q.reactionary_candidate_1932_ideology = "Liberal";
 } else if (Q.reactionary_candidate_1932 == "Westarp" || Q.reactionary_candidate_1932 == "Lettow-Vorbeck") {
     Q.reactionary_candidate_1932_ideology = "Conservative";
-} else if (Q.reactionary_candidate_1932 == "Adenauer" || Q.reactionary_candidate_1932 == "Brüning" || Q.reactionary_candidate_1932 == "Stegerwald") || Q>reactionary_candidate_1932 == "Wirth" {
+} else if (Q.reactionary_candidate_1932 == "Adenauer" || Q.reactionary_candidate_1932 == "Brüning" || Q.reactionary_candidate_1932 == "Stegerwald") || Q.reactionary_candidate_1932 == "Wirth" {
     Q.reactionary_candidate_1932_ideology = "Centrist";
 }
 
