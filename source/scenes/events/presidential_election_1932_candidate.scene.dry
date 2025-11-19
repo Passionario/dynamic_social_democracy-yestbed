@@ -570,7 +570,7 @@ The <span style="color: #7A3C00;">**NSDAP**</span> has nominated Hermann Göring
 - @communist_selection: We await the decision the <span style="color: #700000;">Communists</span>.
 
 @communist_selection
-go-to: thalmann if (Q.kpd_leader == "Thalmann"); munzenberg if (Q.kpd_leader == "Conciliators" and kpd_relation < 70); eberlein if (Q.kpd_leader == "Conciliators" and kpd_relation >= 70)
+go-to: thalmann if kpd_leader == "Thalmann"; munzenberg if (kpd_leader == "Conciliators" and kpd_relation < 70); eberlein if (kpd_leader == "Conciliators" and kpd_relation >= 70)
 
 
 @thalmann
