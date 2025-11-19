@@ -455,7 +455,7 @@ His candidacy is supported by the [? if z_party_name != "CVP": <span style="colo
 @wirth
 title: Joseph Wirth of the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] and a member of the <span style="color: #FF7F00;">Christian Left**</span>.
 view_if: wirth_unlock_pres
-on-arrival: reactionary_candidate_1932_count_2 -=1
+on-arrival: reactionary_candidate_1932_count_2 -= 1
 unavailable-subtitle: Words
 face-image: img/portraits/wirth.jpg
 max-visits: 1
