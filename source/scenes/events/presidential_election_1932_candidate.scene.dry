@@ -17,6 +17,18 @@ if (Q.hindenburg_run) {
     Q.hindenburg_angry_bruning += 20;
 }
 Q.communist_candidate_1932 = "Thälmann";
+if ((Q.kpd_leader == "Conciliators") && (Q.kpd_relation >= 70)) {
+    Q.communist_candidate_1932 = "Eberlein";
+    Q.communist_candidate_1932_disp = "Hugo Eberlein";
+} 
+if ((Q.kpd_leader == "Conciliators") && (Q.kpd_relation < 70)) {
+    Q.communist_candidate_1932 = "Munzenberg";
+    Q.communist_candidate_1932_disp = "Willi Münzenberg";
+} 
+if (Q.kpd_leader != "Conciliators")  {
+    Q.communist_candidate_1932 = "Thälmann";
+    Q.communist_candidate_1932_disp = "Ernst Thälmann";
+}
 
 Q.spd_candidate_1932_disp = "Otto Braun";
 if (Q.hindenburg_run) Q.reactionary_candidate_1932_disp = "Paul von Hindenburg";
@@ -50,7 +62,7 @@ go-to: candidate_selection
 
 With the 1932 German Presidential election coming up next month, we need to decide whether to run a candidate of our own or support one from another party. [? if hindenburg_run: Many are calling for us to support the incumbent Hindenburg, despite his <span style="color: #808080;">reactionary</span> tendencies. Contrary to fears, he hasn’t used his office to destroy the republic yet, so supporting him would hopefully prevent the <span style="color: #7A3C00;">Nazis</span>, who actually support destroying the republic, from winning. ?][? if not hindenburg_run: With Hindenburg's withdrawal, the German Right is in disarray, struggling to find a candidate who can attract support from the moderate right and middle, while also embodying the unifying character of Hindenburg. It’s likely that the candidate they put forward will have a military or industrial background and will be distanced from the partisan bickering of politics. ?]
 
-On the other hand, many in our party are calling for [+ spd_candidate_1932_disp +] to run again, but he is reluctant. [? if kpd_relation >= 50 : Another strange possibility is an united front with the <span style="color: #700000;">Communists</span>, either to support their candidate or our own candidate. ?][? if sapd_formed: The <span style="color: #9B0000;">**SAPD**</span>, our former leftists, [? if kpd_leader = Thalmann: The <span style="color: #9B0000;">**SAPD**</span> seeing the hostility of the <span style="color: #700000;">Communists</span>, are more likely to share an endorsement with us. As long as its one of our own candidates. ?] [? if kpd_leader = Conciliators: are likely to share an endorsement with the <span style="color: #700000;">Communists</span> in the hopes that we will follow to complete the <span style="color: #c00000;">United*</span> <span style="color: #9B0000;">Left</span> <span style="color: #700000;">Front</span>. ?] ?]
+On the other hand, many in our party are calling for [+ spd_candidate_1932_disp +] to run again, but he is reluctant. [? if kpd_relation >= 50 : Another strange possibility is an united front with the <span style="color: #700000;">Communists</span>, either to support their candidate or our own candidate. ?][? if sapd_formed: The <span style="color: #9B0000;">**SAPD**</span>, our former leftists, [? if kpd_leader != "Conciliators": The <span style="color: #9B0000;">**SAPD**</span> seeing the hostility of the <span style="color: #700000;">Communists</span>, are more likely to share an endorsement with us. As long as its one of our own candidates. ?] [? if kpd_leader = "Conciliators": are likely to share an endorsement with the <span style="color: #700000;">Communists</span> in the hopes that we will follow to complete the <span style="color: #c00000;">United*</span> <span style="color: #9B0000;">Left</span> <span style="color: #700000;">Front</span>. ?] ?]
 
 Anyhow, let's see who will be the candidates on <span class="tooltip-text" title="good game">the campaign trail</span>.
 
@@ -298,10 +310,10 @@ if (Q.secondary_reactionary_candidate_1932) {
         if (Q.liberal_reactionary_candidate_1932) Q.other_choice = Q.secondary_reactionary_candidate_1932;
         if (Q.liberal_reactionary_candidate_1932) Q.kvp_choice = Q.secondary_reactionary_candidate_1932;
         if (Q.liberal_reactionary_candidate_1932) Q.dnvp_choice = Q.secondary_reactionary_candidate_1932;
-    }else if (Q.secondary_reactionary_candidate_1932 == "Wirth") {
+    } else if (Q.secondary_reactionary_candidate_1932 == "Wirth") {
         Q.z_choice = Q.secondary_reactionary_candidate_1932;
         if (Q.liberal_reactionary_candidate_1932) Q.other_choice = Q.secondary_reactionary_candidate_1932
-    }else if (Q.secondary_reactionary_candidate_1932 == "Gessler") {
+    } else if (Q.secondary_reactionary_candidate_1932 == "Gessler") {
         Q.ddp_choice = Q.secondary_reactionary_candidate_1932;
         Q.lvp_choice = Q.secondary_reactionary_candidate_1932;
         Q.dvp_choice = Q.secondary_reactionary_candidate_1932;
@@ -447,9 +459,9 @@ on-arrival: reactionary_candidate_1932_count_2 -=1
 unavailable-subtitle: Words
 face-image: img/portraits/wirth.jpg
 max-visits: 1
-go-to: reactionary_candidates if ractionary_cadidate_1932_count_2 > 0
+go-to: reactionary_candidates if reactionary_candidate_1932_count_2 > 0
 
-Jospeh Wirth, situated on the left wing of the <span style="color: #000000;">Center Party</span>, most notable for his time as chancellorships in 1921 and 1922 respectively. He is quite possibly one of the strongest enemies of the <span style="color: #3E88B3;">far*</span>-<span style="color: #7A3C00;">right</span> only rivaled by Jakob Kaiser. Despite the <span style="color: #4B758B;">**BVP**</span> most likely abandoning his candidacy. It has not detered him in the slightest. He is known to be friendly to the <span style="color: #c00000;">**SPD**</span> and would prefer to work with fellow <span style="color: #000000;">rep</span><span style="color: #DD0000;">ubl</span><span style="color: #FFCC00;">ican</span> and will ardently reject the <span style="color: #3E88B3;">far*</span>-<span style="color: #7A3C00;">right</span> much to Schleicher's dismay.\
+Jospeh Wirth, situated on the left wing of the <span style="color: #000000;">Center Party</span>, most notable for his time as chancellorships in 1921 and 1922 respectively. He is quite possibly one of the strongest enemies of the <span style="color: #3E88B3;">far*</span>-<span style="color: #7A3C00;">right</span> only rivaled by Jakob Kaiser. Despite the <span style="color: #4B758B;">**BVP**</span> most likely abandoning his candidacy. It has not detered him in the slightest. He is known to be friendly to the <span style="color: #c00000;">**SPD**</span> and would prefer to work with fellow <span style="color: #000000;">rep</span><span style="color: #DD0000;">ubl</span><span style="color: #FFCC00;">ican</span> and will ardently reject the <span style="color: #3E88B3;">far*</span>-<span style="color: #7A3C00;">right</span> much to Schleicher's dismay.
 
 His candidacy is supported by the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] and may attract other <span style="color: #000000;">rep</span><span style="color: #DD0000;">ubl</span><span style="color: #FFCC00;">ican</span>, possibly some from the [? if not lvp_formed: <span style="color: #C0A054;">**DVP**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?].
 
@@ -625,7 +637,7 @@ go-to: endorsements_braun if braun_campaign; endorsements_eckener if eckener_cam
 
 [? if spd_campaign: - <span style="color: #c00000;">**SPD**</span> ?]
 
-[? if kpd_leader: "Thalmann" and sapd_formed and spd_campaign - <span style="color: #9B0000;">**SAPD**</span>  ?]
+[? if kpd_leader != "Conciliators" and sapd_formed and spd_campaign - <span style="color: #9B0000;">**SAPD**</span>  ?]
 
 [? if kpd_support_spd == 1 and sapd_formed and spd_campaign: - <span style="color: #9B0000;">**SAPD**</span> ?]
 
