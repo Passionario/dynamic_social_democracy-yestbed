@@ -200,7 +200,7 @@ if (Q.reactionary_candidate_1932_count > 0) {
         }
         if (!Q.reactionary_candidate_1932) {
             Q.reactionary_candidate_1932 = "Wirth";
-            Q.secondary_reactionary_candidate_1932_disp = "Joseph Wirth";
+            Q.reactionary_candidate_1932_disp = "Joseph Wirth";
         }
     }
 
