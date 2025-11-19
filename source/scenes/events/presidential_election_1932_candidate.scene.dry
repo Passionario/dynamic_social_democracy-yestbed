@@ -2,7 +2,7 @@ title: Presidential Election Candidates
 subtitle: Should we field our own candidate?
 new-page: true
 on-arrival: {!
-Q.presidential_election_campaigning_seen == 1;
+Q.presidential_election_campaigning_seen = 1;
 if (!Q.hitler_deported && Q.hitler_citizen) {
     Q.nsdap_candidate_1932 = "Hitler";
     Q.nsdap_candidate_1932_disp = "Adolf Hitler";
@@ -19,18 +19,7 @@ if (Q.hindenburg_run) {
     Q.reactionary_candidate_1932_disp = "Paul von Hindenburg";
 }
 Q.communist_candidate_1932 = "Thälmann";
-if ((Q.kpd_leader == "Conciliators") && (Q.kpd_relation >= 70)) {
-    Q.communist_candidate_1932 = "Eberlein";
-    Q.communist_candidate_1932_disp = "Hugo Eberlein";
-} 
-if ((Q.kpd_leader == "Conciliators") && (Q.kpd_relation < 70)) {
-    Q.communist_candidate_1932 = "Munzenberg";
-    Q.communist_candidate_1932_disp = "Willi Münzenberg";
-} 
-if (Q.kpd_leader != "Conciliators")  {
-    Q.communist_candidate_1932 = "Thälmann";
-    Q.communist_candidate_1932_disp = "Ernst Thälmann";
-}
+
 if (Q.nsdap_candidate_1932) {
     Q.dnvp_candidate_1932 = "Duesterberg";
     Q.dnvp_candidate_1932_disp = "Theodor Duesterberg";
